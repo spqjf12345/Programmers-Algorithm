@@ -16,9 +16,8 @@ using namespace std;
 priority_queue<pair<int, int>> pq;
 vector<pair<int, int>> vertex[201];
 
-int d[201]; //거리의 합
 
-int dijkstra(int start, int end){
+void dijkstra(int d[], int start){
     fill(d, d+201, INF);
     pq.push({0, start});
     d[start] = 0;
@@ -38,8 +37,6 @@ int dijkstra(int start, int end){
         }
     }
 
-    
-    return d[end];
 }
 
 int main(){
@@ -56,14 +53,18 @@ int main(){
         vertex[fares[i][1]].push_back({fares[i][0], fares[i][2]});
     }
     
+    int sd[201]; //거리의 합
+    int id[201]; //거리의 합
+    dijkstra(sd, s);
     //따로 갔을때의 비용
-    int cost =  dijkstra(s, a) + dijkstra(s, b);
+    int cost =  sd[a] + sd[b];
     //중간 지점 거쳐 갔을때의 비용
     for(int i = 1; i<= n; i++){
+        dijkstra(id, i);
         if (i != s){//4가 아닐때
-            if(dijkstra(i, a) == 1000000000 || dijkstra(i, b) == 1000000000 || dijkstra(i, a) == 1000000000) continue; //떨어져 있으므로 못감
+            if(id[a] == 1000000000 || id[b] == 1000000000 ) continue; //떨어져 있으므로 못감
             
-            cost = min(cost, dijkstra(i, a) + dijkstra(i, b) + dijkstra(s, i));
+            cost = min(cost, id[a] + id[b] + sd[i]);
         }
     }
     cout << cost << '\n';
