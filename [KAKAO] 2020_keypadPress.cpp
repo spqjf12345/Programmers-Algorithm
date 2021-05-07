@@ -24,7 +24,6 @@ int main(){
 
     for(int i =0; i < numbers.size(); i++)
     {
-        cout << "numbers : " << numbers.at(i) << '\n';
         if(numbers.at(i) == 1 || numbers.at(i) == 4 || numbers.at(i) == 7){
             leftH = numbers.at(i);
             answer+="L";
@@ -61,6 +60,6 @@ int main(){
             }
         }
     }
-   // return answer;
+
     return 0;
 }
