@@ -13,7 +13,7 @@
 #include <algorithm>
 
 using namespace std;
-//vector<string> germs = {"DIA", "RUBY", "RUBY", "DIA", "DIA", "EMERALD", "SAPPHIRE", "DIA"};
+vector<string> germs = {"DIA", "RUBY", "RUBY", "DIA", "DIA", "EMERALD", "SAPPHIRE", "DIA"};
 //vector<string> germs = {"AA", "AB", "AC", "AA", "AC"};
 
 //vector<string> germs = {"XYZ", "XYZ", "XYZ"};
@@ -23,14 +23,14 @@ vector<string> germs = {"DIA", "EM", "EM", "RUB", "DIA"};
 vector<string> len;
 
 //구간 합 순열을 구한 뒤 종류가 가장 많이 다른 길이의 리스트 반환 -> O(n^2)
-//int find_length(vector<string> len){
-//    set<string> s;
-//    for(int i =0; i < len.size(); i++){
-//        s.insert(len[i]);
-//    }
-//
-//    return (int)s.size();
-//}
+int find_length(vector<string> len){
+    set<string> s;
+    for(int i =0; i < len.size(); i++){
+        s.insert(len[i]);
+    }
+
+    return (int)s.size();
+}
 
 int main(){
     int maxNum = 0;
@@ -44,13 +44,9 @@ int main(){
         }
         int end = (int)germs.size() - 1;
         while(end >= start){
-            //for(int j = start; j < end; j++){
             int size = find_length(len);
-//            cout << "size : start end " << size << " " << start+1 << " " << end+1 << '\n';
-            //maxNum = max(maxNum, size);
             if(start == 0 && end == ((int)germs.size() - 1) && maxNum <= size && (end - start) <= (priorJ - priorI)){
-//                cout << " except " << start+1 << " " << end+1 << '\n';
-//                cout << "priorJ priorI " << priorJ+1 << " " << priorI+1 << '\n';
+
                 answer.clear();
                 answer.push_back(start+1);
                 answer.push_back(end+1);
@@ -59,8 +55,7 @@ int main(){
                 maxNum = size;
             }
             if(maxNum <= size && (end - start) < (priorJ - priorI)){
-//                cout << " ----- start end ---- " << start+1 << " " << end+1 << '\n';
-//                cout << "priorJ priorI " << priorJ+1 << " " << priorI+1 << '\n';
+
                 answer.clear();
                 answer.push_back(start+1);
                 answer.push_back(end+1);
@@ -69,7 +64,6 @@ int main(){
                 maxNum = size;
             }
             len.pop_back();
-            //}
             end--;
         }
         
