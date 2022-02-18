@@ -1,69 +1,54 @@
-//
-//  1.cpp
-//  SOMA👩🏻‍💻
-//
-//  Created by JoSoJeong on 2021/05/08.
-//
-
-#include <stdio.h>
-#include <iostream>
-#include <string.h>
-#include <set>
+#include <string>
+#include <vector>
 
 using namespace std;
-set<string> ss;
-//enum Digit{
-//    zero = 0,
-//    one,
-//    two,
-//    three,
-//    four,
-//    five,
-//    six,
-//    seven,
-//    eight,
-//    nine
-//};
 
-int main(){
-    ss = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+int solution(string s) {
+    string ss = "zero one two three four five six seven eight nine";
     string re = "";
-    string s = "23four5six7";
     string result = "";
     for(int i =0; i < s.length(); i++){
-        if( 48 <= s[i] and s[i] <= 57 ){
+        if( 48 <= s[i] and s[i] <= 57 ){ // 숫자
             result += s[i];
             continue;
         }
         re += s[i];
-        if(ss.find(re) != ss.end()){
+        if(ss.find(re) != string::npos){
             if(re == "zero"){
                 result += "0";
+                re = "";
             }else if(re == "one"){
                 result += "1";
+                re = "";
             }else if(re == "two"){
                 result += "2";
+                re = "";
             }else if(re == "three"){
                 result += "3";
+                re = "";
             }else if(re == "four"){
                 result += "4";
+                re = "";
             }else if(re == "five"){
                 result += "5";
+                re = "";
             }else if(re == "six"){
                 result += "6";
+                re = "";
             }else if(re == "seven"){
                 result += "7";
+                re = "";
             }else if(re == "eight"){
                 result += "8";
+                re = "";
             }else if(re == "nine"){
                 result += "9";
+                re = "";
             }
             
-            re = "";
         }
         
     }
-    cout << result << '\n';
     
-    return 0;
+    return stoi(result);
 }
