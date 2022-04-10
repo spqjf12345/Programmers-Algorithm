@@ -33,6 +33,7 @@ func solution(_ new_id:String) -> String {
     if answer.count >= 16 {
         let index = answer.index(answer.startIndex, offsetBy: 15)
         answer = String(answer[answer.startIndex..<index])
+        answer[idex].isUppercase
         if(answer.hasSuffix(".")){
             answer.removeLast()
         }
@@ -45,6 +46,7 @@ func solution(_ new_id:String) -> String {
             answer = answer + String(l)
         }
     }
+    answer.en
     return answer
     
 
