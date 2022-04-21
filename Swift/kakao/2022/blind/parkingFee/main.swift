@@ -25,15 +25,11 @@ func solution(_ fees:[Int], _ records:[String]) -> [Int] {
     var answer = [(String, Int)]() // number : cost
     var stack: [String : Double] = [:] // 입차 출차 시간 계산
     var dic: [String: Double] = [:] // car number - 누적 시간
-    //var arrayOrder: [String] = []
 
     for i in records {
         let line = i.split(separator: " ").map { String($0) }
         let secondT: Double = timeToSecond(line[0])
         let number = line[1]
-//        if !arrayOrder.contains(number) {
-//            arrayOrder.append(number)
-//        }
         if (stack[number] != 0) && (line[2] == "IN") {
             // 처음 입차
             stack[number] = secondT
@@ -43,7 +39,6 @@ func solution(_ fees:[Int], _ records:[String]) -> [Int] {
             let last = stack[number]!
             stack[number] = -1
             // dic에 누적
-            //print("\(number) second \((secondT - last) / 60)")
             dic[number, default: 0] += (secondT - last) / 60  //출차시간 - 입차시간
         }
     }
@@ -60,14 +55,8 @@ func solution(_ fees:[Int], _ records:[String]) -> [Int] {
         //i.value에 맞는 위치에 넣어주기
         let cost = cal(fees, i.value)
         answer.append((i.key, cost))
-//        for (idx, j) in arrayOrder.enumerated() {
-//            if i.key == j {
-//                answer[idx] = cost
-//            }
-//        }
     }
     
-    print(dic)
     answer.sort { $0.0 < $1.0 }
     return answer.map { $0.1 }
     
