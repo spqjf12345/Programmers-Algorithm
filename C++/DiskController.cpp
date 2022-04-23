@@ -34,7 +34,7 @@ int solution(vector<vector<int>> jobs) {
         }
         if(!pq.empty()) {
             curTime += pq.top()[1]; //소요 시간
-            answer += curTime - pq.top()[0] ;//요청 시점
+            answer += curTime - pq.top()[0];//요청 시점
             pq.pop();
         }else {
            //  curTime > job[taskCnt] && pq 비어 있는 경우
