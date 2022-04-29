@@ -27,3 +27,6 @@ func solution(_ N:Int, _ stages:[Int]) -> [Int] {
     return arr.map { Int($0.0) }
 }
 
+//let sorted = failures
+//        .sorted(by: { (s1, s2) in s1.fail == s2.fail ? s1.stage < s2.stage : s1.fail > s2.fail })
+//        .map({ $0.stage })
