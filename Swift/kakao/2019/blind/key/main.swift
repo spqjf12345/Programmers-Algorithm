@@ -7,8 +7,8 @@
 
 import Foundation
 
-var combi = [[Int]]()
-var arr = [Int]()
+//var combi = [[Int]]()
+//var arr = [Int]()
 /// 틀린 코드
 //func solution(_ relation:[[String]]) -> Int {
 //    var answer = 0
