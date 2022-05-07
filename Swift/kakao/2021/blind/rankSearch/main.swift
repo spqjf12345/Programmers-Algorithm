@@ -35,9 +35,9 @@ import Foundation
 func solution(_ info:[String], _ query:[String]) -> [Int] {
     var dic: [String : [Int]] = [:]
     var answer = [Int]()
-       
-   func combination(_ arr: [String], _ curIdx: Int, _ score: Int) {
-       if curIdx == arr.count {
+    
+    func combination(_ arr: [String], _ curIdx: Int, _ score: Int) {
+        if curIdx == arr.count {
            let result = arr.joined()
            
            if dic[result] != nil {
@@ -52,23 +52,23 @@ func solution(_ info:[String], _ query:[String]) -> [Int] {
            combination(temp, curIdx + 1, score)
        }
        return
-   }
+    }
     
     func lowerbound(_ arr: [Int], _ score: Int) -> Int {
-           var low = 0
-           var high = arr.count
-           
-           while low < high {
-               let mid = (low + high) / 2
-               if score <= arr[mid] {
-                   high = mid
-               } else {
-                   low = mid + 1
-               }
-           }
-           // low = score 이상의 점수가 처음 등장하는 인덱스
-           return arr.count - low
-       }
+        var low = 0
+        var high = arr.count
+       
+        while low < high {
+            let mid = (low + high) / 2
+            if score <= arr[mid] {
+                high = mid
+            } else {
+               low = mid + 1
+            }
+        }
+        // low = score 이상의 점수가 처음 등장하는 인덱스
+        return arr.count - low
+    }
     
     for i in info {
         var line = i.components(separatedBy: " ")
